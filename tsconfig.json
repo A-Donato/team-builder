@@ -3,20 +3,48 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"],
-      "@/components/*": ["./src/components/*"],
-      "@/features/*": ["./src/features/*"],
-      "@/lib/*": ["./src/lib/*"],
-      "@/types/*": ["./src/types/*"],
-      "@/utils/*": ["./src/utils/*"],
-      "@/app/*": ["./src/app/*"],
-      "@/stores/*": ["./src/stores/*"],
-      "@/config/*": ["./src/config/*"],
-      "@/db/*": ["./src/db/*"]
+      "@/*": [
+        "./src/*"
+      ],
+      "@/components/*": [
+        "./src/components/*"
+      ],
+      "@/features/*": [
+        "./src/features/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
+      "@/types/*": [
+        "./src/types/*"
+      ],
+      "@/utils/*": [
+        "./src/utils/*"
+      ],
+      "@/app/*": [
+        "./src/app/*"
+      ],
+      "@/stores/*": [
+        "./src/stores/*"
+      ],
+      "@/config/*": [
+        "./src/config/*"
+      ],
+      "@/db/*": [
+        "./src/db/*"
+      ]
     },
-    "types": ["vitest/globals"],
-    "verbatimModuleSyntax": true
+    "types": [
+      "vitest/globals"
+    ],
+    "verbatimModuleSyntax": true,
+    "jsx": "react-jsx",
+    "jsxImportSource": "react"
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"]
-} 
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

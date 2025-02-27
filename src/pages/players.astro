@@ -1,0 +1,102 @@
+---
+import { Button } from "@/components/ui/button";
+import {
+  Table,
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import Layout from "@/layouts/Layout.astro";
+
+const apiUrl = "/api/getPlayers"; // Ensure this is the correct URL
+
+console.log("Fetching players from:", apiUrl); // Log the URL being fetched
+const response = await fetch(new URL(apiUrl, Astro.url));
+
+if (!response.ok) {
+  console.error(
+    "Failed to fetch players:",
+    response.status,
+    response.statusText,
+  );
+  throw new Error("Error fetching players");
+}
+
+let players;
+try {
+  const jsonResponse = await response.json();
+
+  console.log("json response", jsonResponse);
+
+  players = jsonResponse; // Assuming the structure is correct
+} catch (error) {
+  console.error("Failed to parse JSON:", error);
+  throw new Error("Error parsing JSON response");
+}
+---
+
+<Layout title="Players List" breadcrumbs={[
+
+  { label: "Home", href: "/" },
+
+  { label: "Players", href: "/players" },
+
+  { label: "Players List", href: "" } // Current page, no href
+
+]}>
+  <h1 class="text-4xl font-bold mb-6">Players List</h1>
+
+  <div class="overflow-x-auto">
+    <Table className="border border-border">
+      <TableCaption>A list of players in the team.</TableCaption>
+      <TableHeader>
+        <TableRow>
+          <TableHead
+            className="w-[100px] bg-secondary text-secondary-foreground"
+            >Player Name</TableHead
+          >
+          <TableHead className="bg-secondary text-secondary-foreground"
+            >Position</TableHead
+          >
+          <TableHead className="bg-secondary text-secondary-foreground"
+            >Team</TableHead
+          >
+          <TableHead
+            className="text-right bg-secondary text-secondary-foreground"
+            >Actions</TableHead
+          >
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {
+          players?.map((player: any) => (
+            <TableRow key={player.id} className="hover:bg-muted">
+              <TableCell className="font-medium">{player.name}</TableCell>
+              <TableCell>{player.position}</TableCell>
+              <TableCell>{player.team}</TableCell>
+              <TableCell className="text-right">
+                <a
+                  href={`/players/${player.id}`}
+                  class="bg-secondary text-secondary-foreground px-6 py-2 rounded-lg hover:bg-secondary/80"
+                >
+                  View Player
+                </a>{" "}
+              </TableCell>
+            </TableRow>
+          ))
+        }
+      </TableBody>
+    </Table>
+  </div>
+  <div class="mt-6">
+    <a
+      href="/players/new"
+      class="bg-secondary text-secondary-foreground px-6 py-2 rounded-lg hover:bg-secondary/80"
+    >
+      Add Player
+    </a>
+  </div>
+</Layout>

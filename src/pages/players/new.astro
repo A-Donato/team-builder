@@ -1,0 +1,19 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { PlayerForm } from '@/components/features/players/PlayerForm.tsx';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
+---
+
+<Layout title="Add New Player">
+  <main class="container mx-auto px-4 py-8">
+    <Card>
+      <CardHeader>
+        <CardTitle>Add New Player</CardTitle>
+        <CardDescription>Enter the player's details below</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <PlayerForm client:load />
+      </CardContent>
+    </Card>
+  </main>
+</Layout>

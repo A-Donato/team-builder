@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import '@/styles/globals.css'
+
+---
+
+<Layout title="Football Team Builder">
+  <main class="container mx-auto px-4 py-8">
+    <section class="text-center">
+      <h1 class="text-4xl font-bold mb-4 text-foreground">
+        Football Team Builder
+      </h1>
+      <p class="text-xl text-muted-foreground mb-8">
+        Build and manage your football teams with ease
+      </p>
+      <div class="flex justify-center gap-4">
+        <a
+          href="/teams"
+          class="bg-primary text-primary-foreground px-6 py-2 rounded-lg hover:bg-primary/90"
+        >
+          View Teams
+        </a>
+        <a
+          href="/players/new"
+          class="bg-secondary text-secondary-foreground px-6 py-2 rounded-lg hover:bg-secondary/80"
+        >
+          Add Player
+        </a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="/players">View Players List</a></li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</Layout> 

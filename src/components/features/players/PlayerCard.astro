@@ -1,0 +1,9 @@
+---
+const { player } = Astro.props;
+---
+
+<article>
+  <h2>{player.name}</h2>
+  <p>Position: {player.position}</p>
+  <p>Match Scores: {player.match_scores?.join(', ')}</p>
+</article> 

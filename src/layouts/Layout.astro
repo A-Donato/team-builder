@@ -1,0 +1,47 @@
+---
+import '@/styles/globals.css';
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
+interface Props {
+  title: string;
+  breadcrumbs?: { label: string; href: string }[];
+}
+
+const { title, breadcrumbs } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Football Team Builder - Manage your teams with ease" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <div class="relative flex min-h-screen flex-col">
+      <div class="flex-1 p-8">
+        {breadcrumbs && (
+          <Breadcrumb>
+            <BreadcrumbList>
+              {breadcrumbs.map((item, index) => (
+                <BreadcrumbItem key={index}>
+                  <BreadcrumbLink href={item.href}>{item.label}</BreadcrumbLink>
+                  {index < breadcrumbs.length - 1 && <BreadcrumbSeparator />}
+                </BreadcrumbItem>
+              ))}
+            </BreadcrumbList>
+          </Breadcrumb>
+        )}
+        <slot />
+      </div>
+    </div>
+  </body>
+</html> 
